@@ -76,7 +76,7 @@ $(document).ready(function () {
             }
         }
     });
-    $(document).on('keydown', function() {
+    $(document).on('keydown', function(event) {
         if(event.keyCode == 13) {
             $("#unlock").click();
         }

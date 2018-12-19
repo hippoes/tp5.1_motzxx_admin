@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : 127.0.0.1
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : tp5_pro
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-12-19 17:37:35
+Date: 2018-11-24 18:16:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `tp5_admins` (
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态标识',
   `content` varchar(500) COLLATE utf8_unicode_ci NOT NULL DEFAULT '世界上没有两片完全相同的叶子！' COMMENT '备注信息',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tp5_admins
@@ -37,25 +37,6 @@ CREATE TABLE `tp5_admins` (
 INSERT INTO `tp5_admins` VALUES ('1', 'niuNeng@admin', '/cms/images/headshot/niuNeng.png', '87d9bb400c0634691f0e3baaf1e2fd0d', '1', '2018-02-11 21:02:43', '1', '世界上没有两片完全相同的叶子！');
 INSERT INTO `tp5_admins` VALUES ('2', 'baZhaHei@admin', '/cms/images/headshot/baZhaHei.png', 'db69fc039dcbd2962cb4d28f5891aae1', '2', '2018-02-11 21:02:43', '1', '世界上没有两片完全相同的叶子！');
 INSERT INTO `tp5_admins` VALUES ('3', 'moTzxx@admin', '/cms/images/headshot/wuHuang.png', 'db69fc039dcbd2962cb4d28f5891aae1', '1', '2018-02-11 21:02:43', '1', '世界上没有两片完全相同的叶子！');
-INSERT INTO `tp5_admins` VALUES ('7', 'admin', '/cms/images/headshot/baZhaHei.png', '8596f065262d0527c6d7c375d8c0404d', '1', '2018-12-19 16:53:09', '1', 'admin888，落叶随风飘~~');
-
--- ----------------------------
--- Table structure for tp5_admin_log
--- ----------------------------
-DROP TABLE IF EXISTS `tp5_admin_log`;
-CREATE TABLE `tp5_admin_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id编号',
-  `action` varchar(255) NOT NULL COMMENT '行为名称',
-  `performer` varchar(255) NOT NULL COMMENT '执行者',
-  `timeline` int(11) NOT NULL COMMENT '执行时间',
-  `ip` varchar(48) DEFAULT NULL COMMENT '执行者ip',
-  `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp5_admin_log
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for tp5_admin_roles
@@ -73,7 +54,7 @@ CREATE TABLE `tp5_admin_roles` (
 -- ----------------------------
 -- Records of tp5_admin_roles
 -- ----------------------------
-INSERT INTO `tp5_admin_roles` VALUES ('1', '终级管理员', '1|7|6|2|50|3|4|5|51|52|53|', '2018-02-11 21:02:43', '1');
+INSERT INTO `tp5_admin_roles` VALUES ('1', '终级管理员', '1|7|6|2|3|4|5|', '2018-02-11 21:02:43', '1');
 INSERT INTO `tp5_admin_roles` VALUES ('2', '初级管理员', '1|7|6|2|3|4|5|', '2018-02-11 21:02:43', '1');
 
 -- ----------------------------
@@ -183,12 +164,12 @@ CREATE TABLE `tp5_nav_menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `type` tinyint(2) DEFAULT '0' COMMENT '导航类型 0：菜单类  1：权限链接',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tp5_nav_menus
 -- ----------------------------
-INSERT INTO `tp5_nav_menus` VALUES ('45', '根级菜单', '0', '', '/cms/images/icon/menu_icon.png', '1', '0', '2018-02-11 21:02:43', '0');
+INSERT INTO `tp5_nav_menus` VALUES ('0', '根级菜单', '0', '', '/cms/images/icon/menu_icon.png', '1', '0', '2018-02-11 21:02:43', '0');
 INSERT INTO `tp5_nav_menus` VALUES ('2', '菜单管理', '1', 'cms/menu/index', '/cms/images/icon/menu_list.png', '1', '0', '2018-02-11 21:02:43', '0');
 INSERT INTO `tp5_nav_menus` VALUES ('3', '前台管理', '0', '', '/cms/images/icon/desktop.png', '1', '1', '2018-02-11 21:02:43', '0');
 INSERT INTO `tp5_nav_menus` VALUES ('4', '今日赠言', '3', 'cms/todayWord/index', '/cms/images/icon/diplom.png', '1', '0', '2018-02-11 21:02:43', '0');
@@ -211,12 +192,6 @@ INSERT INTO `tp5_nav_menus` VALUES ('40', '分页获取管理员数据', '6', 'c
 INSERT INTO `tp5_nav_menus` VALUES ('41', '增加角色', '7', 'cms/admin/addRole', '/', '1', '0', '2018-11-23 20:48:52', '1');
 INSERT INTO `tp5_nav_menus` VALUES ('42', '修改角色数据', '7', 'cms/admin/editRole', '/', '1', '0', '2018-11-23 20:49:08', '1');
 INSERT INTO `tp5_nav_menus` VALUES ('43', '分页获取文章数据', '5', 'cms/article/ajaxOpForPage', '/', '1', '0', '2018-11-24 16:28:33', '1');
-INSERT INTO `tp5_nav_menus` VALUES ('48', '会员中心', '0', 'cms/admin/user', '/cms/images/icon/nav_default.png', '1', '0', '2018-12-17 16:34:05', '0');
-INSERT INTO `tp5_nav_menus` VALUES ('49', '测试模块', '0', 'cms/test/index', '/cms/images/icon/nav_default.png', '1', '0', '2018-12-17 16:34:27', '0');
-INSERT INTO `tp5_nav_menus` VALUES ('50', '行为日志', '1', 'cms/log/index', '/upload/20181219\\7efa4a149c7686e36ba8f96f3f47c46e.png', '1', '0', '2018-12-19 16:27:33', '0');
-INSERT INTO `tp5_nav_menus` VALUES ('51', '扩展插件', '0', '', '/upload/20181219\\f6c4c8560f6eafd7305bc0c9a4d97000.png', '1', '0', '2018-12-19 16:40:21', '0');
-INSERT INTO `tp5_nav_menus` VALUES ('52', '插件管理', '51', 'cms/plug/index', '/upload/20181219\\8e476e94a0b1821fbc6131223b3ab22a.png', '1', '0', '2018-12-19 16:45:12', '0');
-INSERT INTO `tp5_nav_menus` VALUES ('53', '已装插件', '51', 'cms/plug/pluged', '/upload/20181219\\e1707558baf3ee92f57eaa26844eb01c.png', '1', '0', '2018-12-19 16:48:22', '0');
 
 -- ----------------------------
 -- Table structure for tp5_photos
@@ -240,28 +215,6 @@ INSERT INTO `tp5_photos` VALUES ('3', '/cms/images/headshot/user3.png');
 INSERT INTO `tp5_photos` VALUES ('1', '/cms/images/headshot/user1.png');
 INSERT INTO `tp5_photos` VALUES ('9', '/cms/images/headshot/user9.png');
 INSERT INTO `tp5_photos` VALUES ('5', '/cms/images/headshot/user5.png');
-
--- ----------------------------
--- Table structure for tp5_plugs
--- ----------------------------
-DROP TABLE IF EXISTS `tp5_plugs`;
-CREATE TABLE `tp5_plugs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id编号',
-  `example` varchar(100) NOT NULL COMMENT '标识名',
-  `plugname` varchar(100) NOT NULL COMMENT '插件名',
-  `version` varchar(50) NOT NULL,
-  `author` varchar(100) NOT NULL DEFAULT '无名' COMMENT '作者',
-  `description` varchar(255) NOT NULL COMMENT '插件描述',
-  `path` varchar(255) NOT NULL COMMENT '安装路径',
-  `status` int(10) NOT NULL DEFAULT '0' COMMENT '是否启用 0：禁用；1：启用；',
-  `sql_name` varchar(100) DEFAULT NULL COMMENT '插件使用数据库名称',
-  `timeline` int(11) NOT NULL COMMENT '安装时间',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp5_plugs
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for tp5_today_words

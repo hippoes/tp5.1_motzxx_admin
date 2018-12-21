@@ -3,6 +3,7 @@
 namespace app\common\model;
 
 use app\common\validate\NavMenu;
+use app\common\model\AdminLog;
 use think\Db;
 use \think\Model;
 
@@ -15,11 +16,14 @@ use \think\Model;
 class NavMenus extends BaseModel
 {
     protected $validate;
+    protected $Log;
 
     public function __construct($data = [])
     {
         parent::__construct($data);
         $this->validate = new NavMenu();
+        $this->Log = new AdminLog();
+
     }
 
     /**
@@ -233,6 +237,7 @@ class NavMenus extends BaseModel
             $tag = $this->insert($addData);
             $validateRes['tag'] = $tag;
             $validateRes['message'] = $tag ? '菜单添加成功' : '添加失败';
+            $this->Log->addLog('新增菜单，'.$addData['name'].' "'.$validateRes['message'].'"');
         }
         return $validateRes;
     }
@@ -252,6 +257,7 @@ class NavMenus extends BaseModel
                 ->where('id', $id)
                 ->update(['status' => -1]);
             $validateRes['message'] = $tag ? '删除成功' : '已删除';
+            $this->Log->addLog('删除菜单，id：'.$id.'； "'.$validateRes['message'].'"');
         } else {
             $saveData = [
                 'name' => isset($data['name']) ? $data['name'] : '',
@@ -268,6 +274,7 @@ class NavMenus extends BaseModel
                     ->where('id', $id)
                     ->update($saveData);
                 $validateRes['message'] = $tag ? '菜单修改成功' : '数据无变动';
+                $this->Log->addLog('修改菜单，'.$saveData['name'].' "'.$validateRes['message'].'"');
             }
 
         }

@@ -2,6 +2,7 @@
 namespace app\common\model;
 
 use app\common\validate\Admin;
+use app\common\model\AdminLog;
 use think\Db;
 use think\Model;
 use think\Session;
@@ -9,10 +10,12 @@ use think\Session;
 class Admins extends BaseModel
 {
     protected $validate;
+    protected $Log;
     public function __construct($data = [])
     {
         parent::__construct($data);
         $this->validate = new Admin();
+        $this->Log = new AdminLog();
     }
 
     /**
@@ -119,6 +122,8 @@ class Admins extends BaseModel
                 $validateRes['tag'] = $tag;
                 $validateRes['message'] = $tag ? '管理员添加成功' : '添加失败';
             }
+            unset($addData['password']);
+            $this->Log->addLog('添加管理员，'.$addData['user_name'].' "'.$validateRes['message'].'"');
         }
         return $validateRes;
 
@@ -153,6 +158,8 @@ class Admins extends BaseModel
                     ->update($saveData);
                 $validateRes['tag'] = $tag;
                 $validateRes['message'] = $tag ? '信息修改成功' : '数据无变动，修改失败';
+                unset($saveData['password']);
+                $this->Log->addLog('修改在线管理员，id：'.$id.'；'.$saveData['user_name'].' "'.$validateRes['message'].'"');
             }
         }
         return $validateRes;
@@ -166,11 +173,16 @@ class Admins extends BaseModel
     public function editAdmin($id,$input){
         $opTag = isset($input['tag']) ? $input['tag']:'edit';
         if ($opTag == 'del'){
+//            $tag = $this
+//                ->where('id',$id)
+//                ->update(['status' => -1]);
             $tag = $this
                 ->where('id',$id)
-                ->update(['status' => -1]);
+                ->delete();
             $validateRes['tag'] = $tag;
             $validateRes['message'] = $tag? '管理员删除成功':'Sorry,管理员删除失败！';
+            $this->Log->addLog('删除管理员，id：'.$id.'； "'.$validateRes['message'].'"');
+
         }else{
             $sameTag = $this->chkSameUserName($input['user_name'],$id);
             if ($sameTag){
@@ -196,6 +208,9 @@ class Admins extends BaseModel
                         ->update($saveData);
                     $validateRes['tag'] = $tag;
                     $validateRes['message'] = $tag ? '管理员修改成功' : '数据无变动，修改失败';
+                    unset($saveData['password']);
+                    $this->Log->addLog('修改管理员数据，id：'.$id.'；'.$saveData['user_name'].' "'.$validateRes['message'].'"');
+
                 }
             }
         }
@@ -335,10 +350,30 @@ class Admins extends BaseModel
     }
 
 
+    /**
+     * 根据ID 获取管理员 指定字段数据
+     * @param $id
+     * @param $field
+     * @return array
+     */
+    public function get_find_field($id,$field='*'){
+        $fields = '';
+        $field = explode(',',$field);
+        if(is_array($field)){
+           foreach($field as $v){
+               $fields.='a.'.$v.',';
+           }
+        }
 
+        $res = $this
+            ->alias('a')
+            ->field($fields.'ar.user_name role_name')
+            ->join('admin_roles ar','ar.id = a.role_id')
+            ->where('a.id',$id)
+            ->find();
 
-
-
+        return $res;
+    }
 
 
 

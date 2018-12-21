@@ -241,9 +241,14 @@ function ToPostPopupsDeal(toUrl,postData) {
                 setTimeout(function(){
                     var index = parent.layer.getFrameIndex(window.name); //先得到当前 iframe层的索引
                     parent.layer.close(index); //再执行关闭
+                    parent.location.reload(); // 刷新父窗口
                 },2000);
             }else{
                 //失败
+                setTimeout(function(){
+                    var index = parent.layer.getFrameIndex(window.name); //先得到当前 iframe层的索引
+                parent.layer.close(index); //再执行关闭
+                },2000);
                 //layer.msg(result.message);
             }
         },"JSON");

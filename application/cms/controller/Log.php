@@ -34,15 +34,15 @@ class Log
      */
     public function index()
     {
-        $res = $this->Log->getAdminLogForPage(1,$this->page_limit);
-        foreach($res as $k=>$v){
-            $res[$k]['timeline'] = date('Y-m-d H:i:s',$v['timeline']);
+        $list = $this->Log->getAdminLogForPage(1,$this->page_limit);
+        foreach($list as $k=>$v){
+            $list[$k]['timeline'] = date('Y-m-d H:i:s',$v['timeline']);
         }
         $record_num = $this->Log->getLogCount();
 
         return view('index',
             [
-                'res'=>$res,
+                'list'=>$list,
                 'record_num' => $record_num,
                 'page_limit' => $this->page_limit,
             ]);

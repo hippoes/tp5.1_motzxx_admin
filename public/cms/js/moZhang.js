@@ -284,3 +284,42 @@ function afterDelItem(toUrl,postData,remove_class) {
             }
         },"JSON");
 }
+
+/**
+ * 删除记录
+ * @param id 记录ID
+ * @param toUrl 请求 URL
+ * @constructor
+ */
+function ToDelItems(id,toUrl,remove_class) {
+    var tag_token = $(".tag_token").val();
+    var postData = {'id':id,'tag':'del','_token':tag_token};
+    layer.msg('确定要删除此条记录吗？', {
+        time: 0 //不自动关闭
+        ,btn: ['确定', '离开']
+        ,yes: function(index){
+            afterDelItems(toUrl,postData,remove_class);
+        }
+    });
+}
+function afterDelItems(toUrl,postData,remove_class) {
+    $.post(
+        toUrl,
+        postData,
+        function (result) {
+            dialog.tip(result.message);
+            if(result.status){
+                ToRemoveDivs(remove_class);
+            }else{
+                //失败
+                layer.msg(result.message);
+            }
+        },"JSON");
+}
+// 除去页面所显示的记录 传递 div
+function ToRemoveDivs(tag) {
+    var result=tag.split(",");
+    for(var i=0;i<result.length;i++){
+        $(result[i]).remove()
+    }
+}

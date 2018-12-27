@@ -83,11 +83,11 @@ class AdminLog extends BaseModel
                 $validateRes['tag'] = $tag? $tag : 0;
                 $validateRes['message'] = $tag? '清空日志失败！' : '清空日志成功';
             }elseif($res){
-                $tag = $this->whereIn('id',$id)->select();
+                $tag = $this->whereIn('id',$id)->delete();
                 $validateRes['tag'] = $tag;
                 $validateRes['message'] = $tag? '选中日志删除成功' : '选中日志删除失败！';
             }else{
-                $tag = $this->where('id',$id)->select();
+                $tag = $this->where('id',$id)->delete();
                 $validateRes['tag'] = $tag;
                 $validateRes['message'] = $tag? '日志删除成功' : '日志删除失败！';
             }

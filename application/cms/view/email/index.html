@@ -1,0 +1,201 @@
+{extend name='layouts/cms'}
+{block name='body-content'}
+<button class="layui-btn layui-btn-normal"
+        onclick="addEmail()">
+    <i class="layui-icon">&#xe640;</i> 添加邮件
+</button>
+<button class="layui-btn layui-btn-danger"
+        onclick="delCheck()">
+    <i class="layui-icon">&#x1006;</i> 删除邮件
+</button>
+
+<div class="layui-inline">
+    <div class="layui-input-inline">
+        <form class="form-search" action="{:url('cms/email/index')}" method="post">
+            <input type="hidden" name="record_num" class="record_num" value="<?php echo $record_num; ?>">
+            <input type="hidden" name="page_limit" class="page_limit" value="{$page_limit}">
+            <input type="hidden" name="curr_page" class="curr_page" value="1">
+        </form>
+    </div>
+</div>
+
+<table class="layui-table table-body" lay-even="" lay-skin="row">
+    <thead>
+    <tr>
+        <th>
+            <input type="checkbox" name="check_all" class="check_all">
+        </th>
+        <th>ID</th>
+        <th>标题</th>
+        <th>寄件人</th>
+        <th>收件人</th>
+        <th>时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody class="tbody-items">
+    {volist name="list" id="vo"}
+    <tr class="tr-item-{$vo['id']}">
+        <td><input type="checkbox" name="ids" class="ids" value="{$vo['id']}"></td>
+        <td>{$vo['id']}</td>
+        <td>{$vo['title']}</td>
+        <td>{$vo['sender']}</td>
+        <td>{$vo['send_emails']}</td>
+        <td>{$vo['timeline']}</td>
+        <td>
+            <div class="layui-btn-group">
+                {if condition="$vo['status'] neq '1'"}
+                <button class="layui-btn layui-btn-sm"
+                        onclick="sendEmail('{$vo['id']}')">
+                    <i class="layui-icon">&#xe609;</i>
+                </button>
+                {else /}
+                <button class="layui-btn layui-btn-disabled layui-btn-sm">
+                    <i class="layui-icon">&#xe605;</i>
+                </button>
+                {/if}
+
+                <button class="layui-btn layui-btn-sm"
+                        onclick="editEmail('{$vo['id']}')">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <button class="layui-btn layui-btn-sm"
+                        onclick="delEmail('{$vo['id']}')">
+                    <i class="layui-icon">&#xe640;</i>
+                </button>
+            </div>
+        </td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+
+<div id="demo2-1"></div>
+
+{/block}
+
+{block name='single-content'}
+<script src="__CMS__/js/emails.js"></script>
+<script src="__CMS__/js/moZhang.js"></script>
+<script>
+    // 分页管理
+    layui.use(['laypage', 'layer'], function () {
+        var laypage = layui.laypage;
+        var page_limit = $(".page_limit").val();
+        var record_num = $(".record_num").val();
+        laypage.render({
+            elem: 'demo2-1'
+            , limit: page_limit
+            , count: record_num
+            , jump: function (obj, first) {
+                //obj包含了当前分页的所有参数
+                //首次不执行
+                if (!first) {
+                    //layer.msg(obj.curr);
+                    ajaxOpForPage(obj.curr);
+                }
+            }
+            , theme: '#FF5722'
+        });
+    });
+</script>
+
+<script>
+    //发送邮件
+    function sendEmail() {
+        var toUrl = "{:url('cms/email/send')}";
+        ToOpenPopups(toUrl, '<i class="layui-icon">&#xe609;</i> 发送邮件', '75%', '80%');
+    }
+
+    //添加邮件
+    function addEmail() {
+        var toUrl = "{:url('cms/email/add')}";
+        ToOpenPopups(toUrl, '✚ 添加邮件', '75%', '80%');
+    }
+
+    //根据邮件ID 删除邮件记录
+    function delEmail(id) {
+        var toUrl = "{:url('cms/email/del',['id'=>'EmailID'])}";
+        toUrl = toUrl.replace('EmailID', id);
+        ToDelItem(id, toUrl, '.tr-item-' + id);
+    }
+
+    // 删除选中日志
+    function delCheck() {
+        var ids = '';
+        var cssids = '';
+        $('.tbody-items').find('.ids').each(function () {
+            if ($(this).is(':checked')) {
+                ids += $(this).val() + ',';
+                cssids += '.tr-item-' + $(this).val() + ',';
+            }
+        });
+        ids = ids.substring(0, parseInt(ids.length - 1));
+        cssids = cssids.substring(0, parseInt(cssids.length - 1));
+        // ToRemoveDivs(cssids);
+        if (ids !== '') {
+            var toUrl = "{:url('cms/email/del',['id'=>'EmailsID'])}";
+            toUrl = toUrl.replace('EmailsID', ids);
+            ToDelItems(ids, toUrl, cssids);
+        } else {
+            layer.msg('请选择数据!');
+        }
+    }
+
+    //根据邮件ID修改邮件信息
+    function editEmail(id) {
+        var toUrl = "{:url('cms/email/edit',['id'=>'EmailD'])}";
+        toUrl = toUrl.replace('EmailD', id);
+        ToOpenPopups(toUrl, '✎ 邮件修改', '75%', '80%');
+    }
+
+
+    //通过ajax 获取分页数据
+    function ajaxOpForPage(curr_page) {
+        var toUrl = "{:url('cms/email/ajaxOpForPage')}";
+        $(".curr_page").val(curr_page);
+        var postData = $(".form-search").serialize();
+        ToAjaxOpForPageAdminLog(toUrl, postData);
+        $('.check_all').prop('checked', false);
+    }
+
+    // 删除选中邮件
+    function delCheck() {
+        var ids = '';
+        var cssids = '';
+        $('.tbody-items').find('.ids').each(function () {
+            if ($(this).is(':checked')) {
+                ids += $(this).val() + ',';
+                cssids += '.tr-item-' + $(this).val() + ',';
+            }
+        });
+        ids = ids.substring(0, parseInt(ids.length - 1));
+        cssids = cssids.substring(0, parseInt(cssids.length - 1));
+        // ToRemoveDivs(cssids);
+        if (ids !== '') {
+            var toUrl = "{:url('cms/email/del',['id'=>'EmailID'])}";
+            toUrl = toUrl.replace('EmailID', ids);
+            ToDelItems(ids, toUrl, cssids);
+        } else {
+            layer.msg('请选择数据!');
+        }
+    }
+
+    // 全选 or 全不选
+    $(function () {
+        $('.check_all').click(function () {
+            $('.tbody-items').find('.ids').each(function () {
+                if ($('.check_all').is(':checked')) {
+                    $(this).prop('checked', true);
+                } else {
+                    $(this).prop('checked', false);
+                }
+            })
+        })
+    });
+
+
+
+</script>
+
+{/block}

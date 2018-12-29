@@ -72,12 +72,8 @@ Route::any('cms/test/:name','cms/test/:name');
 Route::any('cms/user/:name','cms/user/:name');
 Route::any('cms/log/:name','cms/log/:name');
 Route::any('cms/plug/:name','cms/plug/:name');
+Route::any('cms/email/:name','cms/email/:name');
 
-Route::any('filed/filed/field_list','filed/filed/field_list');
-Route::any('filed/form/:name','filed/form/:name');
-Route::any('filed/input/:name','filed/input/:name');
-Route::any('filed/upload/:name','filed/upload/:name');
-Route::any('filed/scheme/:name','filed/scheme/:name');
 
 
 

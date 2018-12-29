@@ -55,6 +55,24 @@ class Email
     }
 
     /**
+     * 设置邮箱
+     * @param Request $request
+     * @return \think\response\View|void
+     */
+    public function setting(Request $request)
+    {
+        if ($request->isPost()) {
+            $input = $request->param();
+            dump($input);
+            exit;
+            $opRes = $this->emails->settingEmails($input);
+            return showMsg($opRes['tag'], $opRes['message']);
+        } else {
+            return view('setting');
+        }
+    }
+
+    /**
      * 添加邮件
      * @param Request $request
      * @return \think\response\View|void

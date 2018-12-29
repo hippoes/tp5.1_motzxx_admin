@@ -8,7 +8,10 @@
         onclick="delCheck()">
     <i class="layui-icon">&#x1006;</i> 删除邮件
 </button>
-
+<button class="layui-btn fr_10 layui-btn-normal"
+        onclick="setting()">
+    <i class="layui-icon">&#xe716;</i> 邮件设置
+</button>
 <div class="layui-inline">
     <div class="layui-input-inline">
         <form class="form-search" action="{:url('cms/email/index')}" method="post">
@@ -101,6 +104,16 @@
 </script>
 
 <script>
+
+    /**
+     * 设置邮箱
+     */
+    function setting() {
+        var toUrl = "{:url('cms/email/setting')}";
+        ToOpenPopups(toUrl, '<i class="layui-icon">&#xe716;</i> 邮箱设置', '75%', '80%');
+    }
+
+
     //发送邮件
     function sendEmail() {
         var toUrl = "{:url('cms/email/send')}";

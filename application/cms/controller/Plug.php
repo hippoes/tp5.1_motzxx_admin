@@ -52,7 +52,24 @@ class Plug
     // 已安装插件
     public function pluged()
     {
-        $res = $this->email->sendMail('2929006594@qq.com','圣诞快乐','2018-12-25 Merry Christmas');
+// 添加附件
+        $this->email->addFile('http://img.php.cn//upload/image/279/781/463/1545880815355141.png');
+// 邮件标题
+        $title = '愿得一人心，白首不相离。';
+// 邮件内容
+        $content = <<< EOF
+<p align="center">
+皑如山上雪，皎若云间月。<br>
+闻君有两意，故来相决绝。<br>
+今日斗酒会，明旦沟水头。<br>
+躞蹀御沟上，沟水东西流。<br>
+凄凄复凄凄，嫁娶不须啼。<br>
+愿得一人心，白首不相离。<br>
+竹竿何袅袅，鱼尾何簁簁！<br>
+男儿重意气，何用钱刀为！</p>
+EOF;
+// 发送QQ邮件
+        $res = $this->email->send('2929006594@qq.com', $title, $content);
         dump($res);
     }
 }

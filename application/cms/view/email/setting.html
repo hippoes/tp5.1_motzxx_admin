@@ -5,7 +5,7 @@
         <label class="layui-form-label auto_width">发件人昵称：</label>
         <div class="layui-input-inline">
             <input type="text" name="sender" required lay-verify="required"
-                   value=""
+                   value="{$data['sender']}"
                    placeholder="请输入发件人昵称" autocomplete="off" class="layui-input article-title">
         </div>
     </div>
@@ -14,7 +14,7 @@
         <label class="layui-form-label auto_width">SMTP服务账号：</label>
         <div class="layui-input-inline">
             <input type="text" name="smtp_email" required lay-verify="required"
-                   value=""
+                   value="{$data['smtp_email']}"
                    placeholder="请输入开通SMTP服务邮箱账号" autocomplete="off" class="layui-input article-title">
         </div>
     </div>
@@ -23,7 +23,7 @@
         <label class="layui-form-label auto_width">SMTP服务密码：</label>
         <div class="layui-input-inline">
             <input type="text" name="smtp_pwd" required lay-verify="required"
-                   value=""
+                   value="{$data['smtp_pwd']}"
                    placeholder="请输入SMTP服务授权码" autocomplete="off" class="layui-input article-title">
         </div>
     </div>
@@ -32,7 +32,7 @@
         <label class="layui-form-label auto_width">SMTP服务器网址：</label>
         <div class="layui-input-inline">
             <input type="text" name="smtp_url" required lay-verify="required"
-                   value=""
+                   value="{$data['smtp_url']}"
                    placeholder="请输入SMTP服务器网址" autocomplete="off" class="layui-input article-title">
         </div>
     </div>
@@ -41,7 +41,7 @@
         <label class="layui-form-label auto_width">SMTP服务端口：</label>
         <div class="layui-input-inline">
             <input type="text" name="smtp_port" required lay-verify="required"
-                   value=""
+                   value="{$data['smtp_port']}"
                    placeholder="请输入SMTP服务端口" autocomplete="off" class="layui-input article-title">
         </div>
     </div>
@@ -50,7 +50,7 @@
         <label class="layui-form-label auto_width">测试邮箱：</label>
         <div class="layui-input-inline">
             <input type="text" name="test_email" required lay-verify="required"
-                   value=""
+                   value="{$data['test_email']}"
                    placeholder="请输入测试邮箱" autocomplete="off" class="layui-input article-title">
         </div>
     </div>
@@ -59,7 +59,7 @@
         <label class="layui-form-label auto_width">测试邮件标题：</label>
         <div class="layui-input-inline">
             <input type="text" name="test_title" required lay-verify="required"
-                   value=""
+                   value="{$data['test_title']}"
                    placeholder="请输入邮件标题" autocomplete="off" class="layui-input article-title">
         </div>
     </div>
@@ -67,7 +67,9 @@
     <div class="layui-form-item layui-form-text ">
         <label class="layui-form-label">测试邮件内容：</label>
         <div class="layui-input-block div-article-content">
-            <script id="ue-container" name="test_content" type="text/plain"></script>
+            <script id="ue-container" name="test_content" type="text/plain">
+                {php}echo htmlspecialchars_decode($data['test_content']);{/php}
+            </script>
         </div>
 
     </div>
@@ -75,6 +77,7 @@
     {:token()}
     <div class="layui-form-item">
         <div class="layui-input-block div-form-op">
+            <button id="save_btn" class="layui-btn layui-btn-normal" type="button" onclick="sendTestEmail()">发送测试邮件</button>
             <button id="save_btn" class="layui-btn" type="button" onclick="addEmail()">提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">放弃</button>
         </div>
@@ -142,6 +145,13 @@
     //添加按钮的点击事件
     function addEmail() {
         var toUrl = "{:url('cms/email/setting')}";
+        var postData = $(".form-opArticle").serialize();
+        ToPostPopupsDeal(toUrl, postData);
+    }
+
+    //发送测试邮件
+    function sendTestEmail () {
+        var toUrl = "{:url('cms/email/sendTestEmail')}";
         var postData = $(".form-opArticle").serialize();
         ToPostPopupsDeal(toUrl, postData);
     }

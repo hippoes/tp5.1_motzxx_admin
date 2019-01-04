@@ -11,7 +11,13 @@ function ToAjaxOpForPageAdminLog(toUrl,postData) {
         function (result) {
             if(result.status == 1){
                 var str_html = '';
+                var icon = '';
                 $.each(result.data,function (i,e) {
+                    if (e.status == '0') {
+                        icon = '&#xe609;';
+                    } else {
+                        icon = '&#xe605;';
+                    }
                     str_html +=
                         "<tr class=\"tr-item-"+e.id+"\">\n" +
 
@@ -25,7 +31,7 @@ function ToAjaxOpForPageAdminLog(toUrl,postData) {
                         "                    <div class=\"layui-btn-group\">\n" +
                         "                        <button class=\"layui-btn layui-btn-sm\"\n" +
                         "                                onclick=\"sendEmail('"+e.id+"')\">\n" +
-                        "                            <i class=\"layui-icon\">&#xe609;</i>\n" +
+                        "                            <i class=\"layui-icon\">"+icon+"</i>\n" +
                         "                        </button>\n" +
                         "                        <button class=\"layui-btn layui-btn-sm\"\n" +
                         "                                onclick=\"editEmail('"+e.id+"')\">\n" +

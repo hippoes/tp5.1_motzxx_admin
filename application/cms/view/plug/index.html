@@ -57,6 +57,8 @@
     </tbody>
 </table>
 
+
+
 <div id="demo2-1"></div>
 
 {/block}
@@ -166,7 +168,7 @@
                             //失败
                             layer.msg(result.message);
                         } else {
-                            clear_table('.tbody-items','#demo2-1');
+                            clear_table('.tbody-items', '#demo2-1');
                         }
                     }, "JSON");
                 // afterDelItems(toUrl,postData,remove_class);
@@ -175,7 +177,7 @@
     }
 
     // 清空表格+分页
-    function clear_table ($table ,$page) {
+    function clear_table($table, $page) {
         $($table).remove();
         $($page).remove();
     }

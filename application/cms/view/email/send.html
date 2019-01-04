@@ -1,0 +1,144 @@
+{extend name='layouts/cms'}
+{block name='body-content'}
+<ul class="layui-timeline">
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">发件人地址</h3>
+            <p>{$emailinfo['sender_email']}</p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">发件人昵称</h3>
+            <p>{$emailinfo['sender']}</p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text email_list">
+            <h3 class="layui-timeline-title">收件人列表
+                <small>(红色背景邮件将无法发送)</small>
+            </h3>
+            {volist name="emailinfo.list_true" id="list"}
+            <span class="mylabel_T">{$list}</span>
+            {/volist}
+            {volist name="emailinfo.list_false" id="list"}
+            <span class="mylabel_F">{$list}</span>
+            {/volist}
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">邮件</h3>
+            <h4 class="layui-timeline-title"><b>邮件标题</b></h4>
+            <p>{$emailinfo['title']}</p>
+            <h4 class="layui-timeline-title"><b>邮件内容(内容展示修改无效)</b></h4>
+            <script id="ue-container" name="content" type="text/plain">
+                {php}echo htmlspecialchars_decode($emailinfo['content']);{/php}
+
+            </script>
+            <h4 class="layui-timeline-title"><b>附件地址</b></h4>
+            <p>{$emailinfo['attachment']}</p>
+        </div>
+    </li>
+</ul>
+
+<div class="layui-result">
+    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+        <div class="layui-progress-bar layui-bg-green" lay-percent="0%"></div>
+    </div>
+    <div class="processing">
+        <p>正在给 '<span class="send-obj"></span>' 发送邮件中……<span class="send-result"></span></p>
+    </div>
+    <div class="processing-fail">
+
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <div class="layui-input-block div-form-op" style="margin-left:32px;">
+        <button id="save_btn" class="layui-btn" type="button" data-value="{$emailinfo['status']}" onclick="sendEmails({$emailinfo['id']})">确认发送</button>
+        <button type="reset" class="layui-btn layui-btn-primary">放弃</button>
+    </div>
+</div>
+
+
+{/block}
+
+{block name='single-content'}
+<script src="__CMS__/js/moZhang.js"></script>
+{include file='layouts/ueditor-js'/}
+
+<script>
+    //发送邮件
+    function sendEmails(id) {
+        var value = $('#save_btn').attr('data-value');
+        if(value == 'false'){
+            var len = $('.email_list').find('.mylabel_T').length;
+            if(len){
+                var toUrl = "{:url('cms/email/send')}?rand ="+Math.random();
+                $('.layui-result').css('display','block');
+                for(var i=0;i<len;i++){
+                    // 进度条
+                    var perform = parseInt(parseFloat((i+1)/len,2)*100);
+
+                    // 当前发送邮件
+                    var email = $('.email_list').find('.mylabel_T').eq(i).text();
+                    var postData = {
+                        'id': id,
+                        'email': email
+                    };
+                    ToPostAjaxPro(toUrl, postData, email, perform);
+                    $('#save_btn').attr('data-value','true');
+                }
+            } else {
+                layer.msg('检测到邮箱地址不正确,修改后重试！');
+            }
+        } else {
+            layer.msg('该邮件信息已发送！');
+        }
+    }
+
+
+    /**
+     * MY ajax请求处理 进度条显示
+     * @param toUrl
+     * @param postData
+     * @constructor
+     */
+    function ToPostAjaxPro(toUrl, postData, email, perform) {
+        // 设置ajax 同步请求
+        $.ajaxSetup({
+            async : false
+        });
+        // post 默认异步请求 会错乱进度条顺序
+        $.post(
+            toUrl,
+            postData,
+            function (result) {
+                dialog.tip(result.message);
+                // 当前处理邮箱和进度条
+                $('.processing').find('.send-obj').text(email);
+                $('.layui-bg-green').css('width', perform + '%');
+                $('.layui-bg-green .layui-progress-text').text(perform + '%');
+                console.log(perform);
+                if (result.status){
+                    // 发送成功
+                    $('.processing').find('.send-result').addClass('send-success').text(result.message);
+                    var fail_html = $('.processing').html();
+                    $('.processing-fail').append(fail_html);
+                    $('.processing').find('.send-result').removeClass('send-success').text('');
+                }else{
+                    // 发送失败显示失败条数
+                    $('.processing').find('.send-result').addClass('send-error').text(result.message);
+                    var fail_html = $('.processing').html();
+                    $('.processing-fail').append(fail_html);
+                    $('.processing').find('.send-result').removeClass('send-success').text('');
+                }
+            },"JSON");
+    }
+</script>
+{/block}

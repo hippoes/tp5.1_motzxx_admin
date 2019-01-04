@@ -323,3 +323,4 @@ function ToRemoveDivs(tag) {
         $(result[i]).remove()
     }
 }
+

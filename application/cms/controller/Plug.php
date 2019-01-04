@@ -39,8 +39,6 @@ class Plug
         }
         $record_num = $this->plug->getPlugCount();
 
-        dump($record_num);
-        dump($list);
         return view('index',
             [
                 'list'=>$list,
@@ -68,6 +66,7 @@ class Plug
 竹竿何袅袅，鱼尾何簁簁！<br>
 男儿重意气，何用钱刀为！</p>
 EOF;
+        exit;
 // 发送QQ邮件
         $res = $this->email->send('2929006594@qq.com', $title, $content);
         dump($res);

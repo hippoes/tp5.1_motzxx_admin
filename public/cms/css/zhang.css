@@ -319,3 +319,19 @@
 .auto_width{
 
 }
+.mylabel_T{
+    margin-top: 3px;display: inline-block;padding:0px 3px;background: #0ebc11;color:#fff;margin-right: 5px;
+}
+.mylabel_F{
+    margin-top: 3px;display: inline-block;padding:0px 3px;background: #f84646;color:#fff;margin-right: 5px;
+}
+
+.layui-result{
+    padding:15px;display:none;
+}
+.send-error{
+    color:#ff2222;
+}
+.send-success{
+    color:#0ebc11;
+}

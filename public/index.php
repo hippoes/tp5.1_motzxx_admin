@@ -12,6 +12,9 @@
 // [ 应用入口文件 ]
 namespace think;
 
+@define(APP_PATH,__DIR__.'/../');
+define('EXTEND_PATH', '../extend/');
+
 // 加载基础文件
 require __DIR__ . '/../thinkphp/base.php';
 

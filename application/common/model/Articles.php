@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use app\common\validate\Article;
+use app\common\model\AdminLog;
 use think\Db;
 use \think\Model;
 /**
@@ -15,10 +16,12 @@ class Articles extends BaseModel
     // 设置当前模型对应的完整数据表名称
     protected $autoWriteTimestamp = 'datetime';
     protected $validate;
+    protected $Log;
     public function __construct($data = [])
     {
         parent::__construct($data);
         $this->validate = new Article();
+        $this->Log = new AdminLog();
     }
 
     /**
@@ -159,8 +162,9 @@ class Articles extends BaseModel
         if ($opTag == 'del') {
             Db::name('article_points')
                 ->where('article_id', $id)
-                ->update(['status' => -1]);
+                ->delete();
             $validateRes = ['tag' => 1, 'message' => '删除成功'];
+            $this->Log->addLog('删除文章，id：'.$id.'； "'.$validateRes['message'].'"');
         } else {
             $saveData = [
                 'title' => $input['title'],
@@ -185,6 +189,7 @@ class Articles extends BaseModel
                 }
                 $validateRes['tag'] = $saveTag;
                 $validateRes['message'] = $saveTag ? '修改成功' : '数据无变动';
+                $this->Log->addLog('修改文章，'.$saveData['title'].' "'.$validateRes['message'].'"');
             }
         }
         return $validateRes;
@@ -222,6 +227,8 @@ class Articles extends BaseModel
             }
             $validateRes['tag'] = $tag;
             $validateRes['message'] = $tag ? '添加成功' : '添加失败';
+
+            $this->Log->addLog('新增文章，'.$addData['title'].' "'.$validateRes['message'].'"');
         }
         return $validateRes;
     }

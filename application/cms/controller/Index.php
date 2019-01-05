@@ -63,6 +63,10 @@ class Index{
         $adminModel = new Admins();
         if ($request->isGet()){
             $adminData = $adminModel->getAdminData($id);
+//            echo "<pre>";
+//            var_dump($adminData);
+//            echo "</pre>";
+
             return view('admin',[
                 'admin' => $adminData,
             ]);

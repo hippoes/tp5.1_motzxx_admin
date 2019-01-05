@@ -65,6 +65,18 @@ Route::post('api/upload/img_file','api/upload/img_file');
 Route::any('api/upload/test','api/upload/test');
 
 
+/**
+ * 20181219 新增
+ */
+Route::any('cms/test/:name','cms/test/:name');
+Route::any('cms/user/:name','cms/user/:name');
+Route::any('cms/log/:name','cms/log/:name');
+Route::any('cms/plug/:name','cms/plug/:name');
+Route::any('cms/email/:name','cms/email/:name');
+Route::any('cms/smscode/:name','cms/smsCode/:name');
+
+
+
 
 
 

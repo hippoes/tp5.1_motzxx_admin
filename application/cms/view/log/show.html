@@ -1,0 +1,45 @@
+{extend name='layouts/cms'}
+{block name='body-content'}
+<ul class="layui-timeline">
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">日志记录</h3>
+            <p>{$LogData['action']}</p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">执行人员</h3>
+            <p>{$LogData['performer']}</p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">执行时间</h3>
+            <p>{php}echo date('Y-m-d H:i:s',$LogData['timeline']){/php}</p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">ip地址</h3>
+            <p>{$city}({$LogData['ip']})</p>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">记录</h3>
+            <p>{$LogData['remark']}</p>
+        </div>
+    </li>
+</ul>
+
+{/block}
+
+{block name='single-content'}
+
+{/block}

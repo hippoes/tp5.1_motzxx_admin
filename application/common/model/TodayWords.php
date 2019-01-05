@@ -3,6 +3,7 @@
 namespace app\common\model;
 
 use app\common\validate\TodayWord;
+use app\common\model\AdminLog;
 use think\Db;
 use \think\Model;
 
@@ -15,11 +16,13 @@ use \think\Model;
 class TodayWords extends BaseModel
 {
     protected $validate;
+    protected $Log;
 
     public function __construct($data = [])
     {
         parent::__construct($data);
         $this->validate = new TodayWord();
+        $this->Log = new AdminLog();
     }
 
     /**
@@ -121,6 +124,7 @@ class TodayWords extends BaseModel
             $tag = $this->insert($addData);
             $validateRes['tag'] = $tag;
             $validateRes['message'] = $tag ? '添加成功' : '添加失败';
+            $this->Log->addLog('新增赠言，'.$addData['from'].' "'.$validateRes['message'].'"');
         }
         return $validateRes;
     }
@@ -138,8 +142,10 @@ class TodayWords extends BaseModel
         if ($opTag == 'del') {
             $this
                 ->where('id', $id)
-                ->update(['status' => -1]);
+                ->delete();
             $validateRes = ['tag' => 1, 'message' => '删除成功'];
+            $this->Log->addLog('删除赠言，id：'.$id.'； "'.$validateRes['message'].'"');
+
         } else {
             $saveData = [
                 'from' => $data['from'],
@@ -156,6 +162,7 @@ class TodayWords extends BaseModel
                     ->update($saveData);
                 $validateRes['tag'] = $saveTag;
                 $validateRes['message'] = $saveTag ? '修改成功' : '数据无变动';
+                $this->Log->addLog('修改赠言，'.$saveData['from'].' "'.$validateRes['message'].'"');
             }
         }
         return $validateRes;

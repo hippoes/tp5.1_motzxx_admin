@@ -3,15 +3,18 @@ namespace app\common\model;
 
 use app\common\controller\Base;
 use app\common\validate\AdminRole;
+use app\common\model\AdminLog;
 use think\Model;
 
 class AdminRoles extends BaseModel
 {
     protected $validate;
+        protected $Log;
     public function __construct($data = [])
     {
         parent::__construct($data);
         $this->validate = new AdminRole();
+        $this->Log = new AdminLog();
     }
 
     /**
@@ -69,6 +72,7 @@ class AdminRoles extends BaseModel
                 $tag = $this->insert($addData);
                 $validateRes['tag'] = $tag;
                 $validateRes['message'] = $tag ? '角色添加成功' : '角色添加失败';
+                $this->Log->addLog('添加角色，'.$addData['user_name'].' "'.$validateRes['message'].'"');
             }
         }
         return $validateRes;
@@ -85,9 +89,10 @@ class AdminRoles extends BaseModel
         if ($opTag == 'del'){
             $tag = $this
                 ->where('id',$id)
-                ->update(['status' => -1]);
+                ->delete();
             $validateRes['tag'] = $tag;
             $validateRes['message'] = $tag? '角色删除成功':'Sorry,角色删除失败！';
+            $this->Log->addLog('删除角色，id：'.$id.'； "'.$validateRes['message'].'"');
         }else{
             $sameTag = $this->chkSameUserName($input['user_name'],$id);
             if ($sameTag){
@@ -106,6 +111,7 @@ class AdminRoles extends BaseModel
                         ->where('id',$id)
                         ->update($saveData);
                     $validateRes['message'] = $tag ? '角色修改成功' : '数据无变动，修改失败';
+                    $this->Log->addLog('修改角色，id：'.$id.'；'.$saveData['user_name'].' "'.$validateRes['message'].'"');
                 }
             }
         }

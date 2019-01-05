@@ -117,7 +117,7 @@
                     </dl>
                     {else}
                     <a class="a-to-Url single-to-Url" href="javascript:;"
-                       nav_menu_id="{$vo['id']}" actionx="{:url($menu['action'])}">
+                       nav_menu_id="{$vo['id']}" action="{:url($menu['action'])}">
                         <i class="layui-icon"><img src="{$menu['icon']}"/></i>
                         {$menu['name']}
                     </a>
@@ -150,6 +150,7 @@
 </div>
 </body>
 <script>
+    
     $(".refresh").click(function () {
         if ($(this).hasClass("refreshThis")) {
             $(this).removeClass("refreshThis");

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## 简介
 
 - 此项目，实现的后台管理功能自然还不全面，可根据自己的需求进行功能扩展
@@ -91,3 +92,7 @@ composer install
  
  
  
+=======
+# tp5.1_motzxx_admin
+基于motzxx github thinkphp5整理框架进行开发功能
+>>>>>>> b76622ee31e110b010d385a6a497060b4acb2f4c

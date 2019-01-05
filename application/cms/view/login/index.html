@@ -45,7 +45,8 @@
         <div class="layui-form-item">
             <input type="text" name="login_verifyCode" required
                    class="layui-input input-verifyCode" placeholder="请输入验证码">
-            <span class="span-img-verifyCode">{:captcha_img()}</span>
+            <span class="span-img-verifyCode"><img id="checkpic" src='{:captcha_src()}' alt="captcha"
+                                                   onclick="change_img();"></span>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block div-form-op">
@@ -58,15 +59,17 @@
     </form>
 </div>
 <style>
-    .img-user_name,.img-user_pwd{
+    .img-user_name, .img-user_pwd {
         width: 25px;
     }
+
     .input-verifyCode {
         font-weight: 700;
         font-family: "Droid Sans";
         width: 40%;
         height: 50.2px;
     }
+
     .span-img-verifyCode {
         position: relative;
         top: -50.2px;
@@ -99,7 +102,7 @@
             }
         }).resize();
     };
-    $(document).on('keydown', function () {
+    $(document).on('keydown', function (event) {
         if (event.keyCode == 13) {
             $(".btn-login").click();
         }
@@ -121,8 +124,16 @@
                 } else {
                     //失败
                     layer.msg(result.message);
+                    change_img();
                 }
             }, "JSON");
+    }
+
+    /**
+     * 点击切换验证码
+     */
+    function change_img() {
+        document.getElementById('checkpic').src = '{:captcha_src()}' + "?" + Math.random();
     }
 </script>
 </html>

@@ -16,7 +16,12 @@ return [
     // 日志记录方式，内置 file socket 支持扩展
     'type'  => 'File',
     // 日志保存目录
-    'path'  => '',
+    'path'  => APP_PATH.'logs/',
     // 日志记录级别
     'level' => [],
+    'apart_level'   =>  ['error','sql'],
+    'file_size'     =>2097152,
+//    'max_files'	=> 30,
+    'allow_key' =>  ['127.0.0.1'],
+
 ];

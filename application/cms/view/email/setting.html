@@ -1,0 +1,163 @@
+{extend name="layouts/cms"}
+{block name='body-content'}
+<form class="layui-form form-opArticle layui-form-pane">
+    <div class="layui-form-item">
+        <label class="layui-form-label auto_width">发件人昵称：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="sender" required lay-verify="required"
+                   value="{$data['sender']}"
+                   placeholder="请输入发件人昵称" autocomplete="off" class="layui-input article-title">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label auto_width">SMTP服务账号：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="smtp_email" required lay-verify="required"
+                   value="{$data['smtp_email']}"
+                   placeholder="请输入开通SMTP服务邮箱账号" autocomplete="off" class="layui-input article-title">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label auto_width">SMTP服务密码：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="smtp_pwd" required lay-verify="required"
+                   value="{$data['smtp_pwd']}"
+                   placeholder="请输入SMTP服务授权码" autocomplete="off" class="layui-input article-title">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label auto_width">SMTP服务器网址：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="smtp_url" required lay-verify="required"
+                   value="{$data['smtp_url']}"
+                   placeholder="请输入SMTP服务器网址" autocomplete="off" class="layui-input article-title">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label auto_width">SMTP服务端口：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="smtp_port" required lay-verify="required"
+                   value="{$data['smtp_port']}"
+                   placeholder="请输入SMTP服务端口" autocomplete="off" class="layui-input article-title">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label auto_width">测试邮箱：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="test_email" required lay-verify="required"
+                   value="{$data['test_email']}"
+                   placeholder="请输入测试邮箱" autocomplete="off" class="layui-input article-title">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label auto_width">测试邮件标题：</label>
+        <div class="layui-input-inline">
+            <input type="text" name="test_title" required lay-verify="required"
+                   value="{$data['test_title']}"
+                   placeholder="请输入邮件标题" autocomplete="off" class="layui-input article-title">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text ">
+        <label class="layui-form-label">测试邮件内容：</label>
+        <div class="layui-input-block div-article-content">
+            <script id="ue-container" name="test_content" type="text/plain">
+                {php}echo htmlspecialchars_decode($data['test_content']);{/php}
+            </script>
+        </div>
+
+    </div>
+
+    {:token()}
+    <div class="layui-form-item">
+        <div class="layui-input-block div-form-op">
+            <button id="save_btn" class="layui-btn layui-btn-normal" type="button" onclick="sendTestEmail()">发送测试邮件</button>
+            <button id="save_btn" class="layui-btn" type="button" onclick="addEmail()">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">放弃</button>
+        </div>
+    </div>
+</form>
+
+{/block}
+
+{block name='single-content'}
+<script src="__CMS__/js/moZhang.js"></script>
+{include file='layouts/ueditor-js'/}
+<script>
+    /*layui.use('upload', function () {
+        var upload = layui.upload;
+        var tag_token = $(".tag_token").val();
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '.btn_upload_img'
+            , type: 'images'
+            , exts: 'jpg|png|gif|zip|rar|tag' //设置一些后缀，用于演示前端验证和后端的验证
+            , auto: false //选择图片后是否直接上传
+            , bindAction: '#save_btn'
+            // ,accept:'file' //上传文件类型
+            , url: '/api/upload/img_file'
+            , data: {'_token': tag_token}
+            , choose: function (obj) {
+                //预读本地文件，如果是多文件，则会遍历。(不支持ie8/9)
+                obj.preview(function (index, file, result) {
+                    var len = file.name.length;
+                    var lastfind = file.name.lastIndexOf('.');
+                    var exts = file.name.substring(lastfind + 1, len);
+                    if (exts == 'zip' || exts == 'rar' || exts == 'tag') {
+                        result = 'http://' + window.location.host + '/upload/at/yasuobao.png';
+                        $('.img-upload-view').css('width', '80px');
+                        $('.upload-name').text(file.name);
+                        $('.menu-icon_name').val(file.name);
+                    } else {
+                        $('.img-upload-view').css('width', 'auto');
+                        $('.upload-name').empty();
+                    }
+                    $('.img-upload-view').attr('src', result); //图片链接（base64）
+                });
+            }
+            , before: function (obj) {
+
+            }
+            , done: function (res) {
+                dialog.tip(res.message);
+                //如果上传成功
+                if (res.status == 1) {
+                    $('.menu-icon').val(res.data.url);
+                    var src_view = $('.img-upload-view').attr('src');
+                    var toUrl = "{:url('cms/email/add')}";
+                    var postData = $(".form-opArticle").serialize();
+                    ToPostPopupsDeal(toUrl, postData);
+                }
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                return layer.msg('上传失败,请重新上传');
+            }
+        });
+    });
+*/
+    //添加按钮的点击事件
+    function addEmail() {
+        var toUrl = "{:url('cms/email/setting')}";
+        var postData = $(".form-opArticle").serialize();
+        ToPostPopupsDeal(toUrl, postData);
+    }
+
+    //发送测试邮件
+    function sendTestEmail () {
+        var toUrl = "{:url('cms/email/sendTestEmail')}";
+        var postData = $(".form-opArticle").serialize();
+        ToPostPopupsDeal(toUrl, postData);
+    }
+
+$(function(){
+    $('.auto_width').css('width','155px');
+})
+</script>
+{/block}

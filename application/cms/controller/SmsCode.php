@@ -44,9 +44,15 @@ class SmsCode
 
         $phone = '17610900163';
         $code = rand(000000,999999);
-        $res = $this->Sms->send($phone, $code);
+        // 发送短信
+        // $res = $this->Sms->send($phone, $code);
+        // 发送返回json字串
+        $res = '{"Message":"OK","RequestId":"17B45CEF-90AB-42C0-9143-7D56592DBE13","BizId":"654809646664262391^0","Code":"OK"}';
+        $res = json_decode($res, true);
+        $codes = $res['Code'];
+        $status = $this->Sms->code_switch($codes);
 
-        dump($res);
+        dump($status);
     }
 
 }

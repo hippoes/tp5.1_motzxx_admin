@@ -74,6 +74,7 @@ Route::any('cms/log/:name','cms/log/:name');
 Route::any('cms/plug/:name','cms/plug/:name');
 Route::any('cms/email/:name','cms/email/:name');
 Route::any('cms/smscode/:name','cms/smsCode/:name');
+Route::any('cms/oauth/:name','cms/oauth/:name');
 
 
 

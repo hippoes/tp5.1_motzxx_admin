@@ -1,0 +1,76 @@
+{extend name='layouts/cms'}
+{block name='body-content'}
+<style>
+    .list_content{color:#ff2222;}
+</style>
+{if !empty($user_name)}
+<span>{$user_name},<a href="/cms/oauth/weibo_loginout">退出登录</a></span>
+{else/}
+<a href="{$url}">微博登录</a>
+{/if}
+<ul class="layui-timeline">
+    {if !empty($token_info)}
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">token_info</h3>
+            <h5>参考链接：<a href="https://open.weibo.com/wiki/Oauth2/get_token_info">https://open.weibo.com/wiki/Oauth2/get_token_info</a></h5>
+
+            <p>授权用户的uid: <span class="list_content">{$token_info['uid']}</span></p>
+            <p>access_token所属的应用appkey: <span class="list_content">{$token_info['appkey']}</span></p>
+            <p>用户授权的scope权限: <span class="list_content">{$token_info['scope']}</span></p>
+            <p>access_token的创建时间: <span class="list_content">{$token_info['create_at']}</span></p>
+            <p>access_token的剩余时间: <span class="list_content">{$token_info['expire_in']}</span></p>
+        </div>
+    </li>
+    {/if}
+    {if !empty($user_info)}
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">user_info</h3>
+            <h5>参考链接：<a href="https://open.weibo.com/wiki/2/users/show">https://open.weibo.com/wiki/2/users/show</a></h5>
+
+            <p>用户UID: <span class="list_content">{$user_info['id']}</span></p>
+            <p>字符串型的用户UID: <span class="list_content">{$user_info['idstr']}</span></p>
+            <p>用户昵称 : <span class="list_content">{$user_info['screen_name']}</span></p>
+            <p>友好显示名称: <span class="list_content">{$user_info['name']}</span></p>
+            <p>用户所在省级ID: <span class="list_content">{$user_info['province']}</span></p>
+            <p>用户所在城市ID: <span class="list_content">{$user_info['city']}</span></p>
+            <p>用户所在地: <span class="list_content">{$user_info['location']}</span></p>
+            <p>用户个人描述: <span class="list_content">{$user_info['description']}</span></p>
+            <p>用户博客地址: <span class="list_content">{$user_info['url']}</span></p>
+            <p>用户头像地址（中图），50×50像素: <span class="list_content">{$user_info['profile_image_url']}</span></p>
+            <p>用户的微博统一URL地址: <span class="list_content">{$user_info['profile_url']}</span></p>
+            <p>用户的个性化域名: <span class="list_content">{$user_info['domain']}</span></p>
+            <p>用户的微号: <span class="list_content">{$user_info['weihao']}</span></p>
+            <p>性别: <span class="list_content">{$user_info['gender']}，m：男、f：女、n：未知</span></p>
+            <p>粉丝数: <span class="list_content">{$user_info['followers_count']}</span></p>
+            <p>关注数: <span class="list_content">{$user_info['friends_count']}</span></p>
+            <p>微博数: <span class="list_content">{$user_info['statuses_count']}</span></p>
+            <p>收藏数: <span class="list_content">{$user_info['favourites_count']}</span></p>
+            <p>用户创建（注册）时间 : <span class="list_content">{$user_info['created_at']}</span></p>
+            <p>是否允许所有人给我发私信 : <span class="list_content">{$user_info['allow_all_act_msg']}，true：是，false：否</span></p>
+            <p>是否允许标识用户的地理位置 : <span class="list_content">{$user_info['geo_enabled']}，true：是，false：否</span></p>
+            <p>是否是微博认证用户，即加V用户 : <span class="list_content">{$user_info['verified']}，true：是，false：否</span></p>
+            <p>用户备注信息: <span class="list_content">{$user_info['remark']}</span></p>
+            <p>是否允许所有人对我的微博进行评论 : <span class="list_content">{$user_info['allow_all_comment']}，true：是，false：否</span></p>
+
+            <p>用户头像地址（大图），180×180像素 : <span class="list_content">{$user_info['avatar_large']}</span></p>
+            <p>用户头像地址（高清），高清头像原图 : <span class="list_content">{$user_info['avatar_hd']}</span></p>
+            <p>认证原因: <span class="list_content">{$user_info['verified_reason']}</span></p>
+            <p>该用户是否关注当前登录用户: <span class="list_content">{$user_info['follow_me']}，true：是，false：否 </span></p>
+            <p>用户的在线状态: <span class="list_content">{$user_info['online_status']}，0：不在线、1：在线 </span></p>
+            <p>用户的互粉数: <span class="list_content">{$user_info['bi_followers_count']}</span></p>
+            <p>用户当前的语言版本: <span class="list_content">{$user_info['lang']}，zh-cn：简体中文，zh-tw：繁体中文，en：英语 </span></p>
+        </div>
+    </li>
+</ul>
+{/if}
+
+
+{/block}
+
+{block name='single-content'}
+
+{/block}

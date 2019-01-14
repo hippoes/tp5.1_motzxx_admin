@@ -1,0 +1,2 @@
+<?php die('forbidden'); ?>
+{"appid":"101539047","appkey":"2b27382035fc3d2d9915d2a435df0e6a","callback":"http://hippos.sharephotos.cn/cms/oauth/qqcallback","scope":"get_user_info","errorReport":true,"storageType":"file","host":"localhost","user":"root","password":"root","database":"test"}

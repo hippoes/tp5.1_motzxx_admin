@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head>
+    <meta charset="UTF-8">
+    <title>微博插件</title>
+    <meta name="keywords" content="moTzxx-CMS"/>
+    <meta name="description" content="moTzxx-CMS Version:1.0"/>
+    <meta name="Author" content="moTzxx"/>
+    <link href="./favicon.ico" rel="shortcut icon">
+    <!-- load layui -->
+    {include file="layouts/layui" /}
+    <!-- 加载公共文件  -->
+    <link href="__CMS__/css/zhang.css" rel="stylesheet">
+    <script type='text/javascript' src="__CMS__/js/moZhang.js"></script>
+
+    <script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=463220163&debug=true" type="text/javascript" charset="utf-8"></script>
+    <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<ul class="layui-timeline">
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">分享按钮</h3>
+            <wb:share-button appkey="463220163" addition="number" type="button" ralateUid="6317835803" default_text="%E6%AC%A2%E8%BF%8E%E4%BD%BF%E7%94%A8%E5%88%86%E4%BA%AB%E5%8A%9F%E8%83%BD%EF%BC%8C%E8%B5%A0%E4%BA%BA%E7%8E%AB%E7%91%B0%EF%BC%8C%E6%89%8B%E7%95%99%E4%BD%99%E9%A6%99%EF%BC%8C%E5%BF%AB%E6%8A%8A%E5%A5%BD%E7%9A%84%E5%92%A8%E8%AF%A2%E5%86%85%E5%AE%B9%E5%88%86%E4%BA%AB%E7%BB%99%E6%9C%8B%E5%8F%8B%E5%90%A7%EF%BC%81" pic="http%3A%2F%2Fwx2.sinaimg.cn%2Fsquare%2F006TyZHtgy1fyxvh1r4dhj3028028dfq.jpg" language="zh_cn"></wb:share-button>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">赞组件</h3>
+            <wb:like appkey="KdvI7"></wb:like>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">分享到微博</h3>
+            <wb:share-button type="button" size="middle"> </wb:share-button>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">微博登录</h3>
+            <div id="wb_connect_btn"></div>
+            <textarea class='wb_userinfo' cols='80' rows='5'></textarea>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">关注按钮</h3>
+            <div id="wb_follow_btn"></div>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">微博名片</h3>
+            单个：<a id="wb_card_alone" wb_screen_name="吾皇的白茶" href="#">吾皇的白茶</a><br/>
+            <div id='wb_card_auto'>
+                批量：
+                <a wb_screen_name="你好_竹子" href="#">@你好_竹子 </a>
+                <a wb_screen_name="巴扎黑减肥中" href="#">@巴扎黑减肥中 </a>
+                <a wb_screen_name="微博开放平台" href="#">@微博开放平台</a>
+            </div>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">微博发布器</h3>
+            <button type="button" id="wb_publish">微博发布器</button>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">好友选择器</h3>
+            <button id="wb_selector" type="button">好友选择器</button>
+        </div>
+    </li>
+
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">一键关注</h3>
+            <wb:bulkfollow uids="1642909335,1782515283" type="1" width="260" count="5" color="C2D9F2,FFFFFF,0082CB,666666" ></wb:bulkfollow>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">微博直播组件</h3>
+            <wb:livestream skin="silver" appkey="463220163" topic="%E5%9B%BD%E5%AE%B6%E6%9C%80%E9%AB%98%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A5%96~%E7%8C%AA%E5%B9%B4%E5%8F%AA%E6%9C%89354%E5%A4%A9|%E5%9B%BD%E5%AE%B6%E6%9C%80%E9%AB%98%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A5%96~%E7%8C%AA%E5%B9%B4%E5%8F%AA%E6%9C%89354%E5%A4%A9" width="450" height="300" ></wb:livestream>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">微博话题墙</h3>
+            <wb:topic uid="1252103722" column="y" border="y" width="821" height="1190" tags="%E5%B7%B4%E6%89%8E%E9%BB%91%2C%E5%90%BE%E7%9A%87%2C%E5%B0%8F%E6%B5%B7" language="zh_cn" version="base" appkey="KdvI7" refer="y" footbar="y" url="http%3A%2F%2Fhippos.sharephotos.cn%2Fcms%2Foauth%2Fweibo_js_sdk.html" filter="y" ></wb:topic>
+        </div>
+    </li>
+</ul>
+<script>
+    $(function(){
+        // 登录状态
+        var status = WB2.checkLogin();
+
+        // 登录回调函数
+        WB2.anyWhere(function (W) {
+            W.widget.connectButton({
+                id: "wb_connect_btn",
+                type: '3,2',
+                callback: {
+                    login: function (o) { //登录后的回调函数
+                        alert("login: " + o.screen_name);
+                        get_userinfo(o.screen_name);
+                    },
+                    logout: function () { //退出后的回调函数
+                        alert('logout');
+                    }
+                }
+            });
+        });
+
+        // 获取用户名详细信息
+        function get_userinfo(username) {
+            WB2.anyWhere(function(W){
+                //数据交互
+                W.parseCMD('/users/show.json', function(oResult, bStatus) {
+                    if(bStatus) {
+                        //to do something...
+                        console.log(bStatus);
+                        console.log(oResult);
+                        // 将信息输出
+                        $(".wb_userinfo").text(JSON.stringify(oResult));
+                    }
+                }, {
+                    screen_name : username
+                }, {
+                    method : 'get',
+                    cache_time : 30
+                });
+            });
+        }
+        // 关注按钮
+        WB2.anyWhere(function(W){
+            W.widget.followButton({
+                'nick_name': '吾皇的白茶',  //用户昵称
+                'id': "wb_follow_btn",
+                'show_head' : true, //是否显示头像
+                'show_name' : true, //是否显示名称
+                'show_cancel': true //是否显示取消关注按钮
+            });
+        });
+        // 微博名片
+        WB2.anyWhere(function(W){
+            W.widget.hoverCard({
+                id : "wb_card_alone"
+            });
+        });
+        // 批量设置微博名片
+        WB2.anyWhere(function(W){
+            W.widget.hoverCard({
+                id : "wb_card_auto",
+                search: true
+            });
+        });
+
+        // 微博发布器
+        WB2.anyWhere(function(W){
+            W.widget.publish({
+                'id' : 'wb_publish',
+                'default_text' : '预置方案　& \r\n我可以换行.',
+                'callback' : function(o) {
+                    //do something...
+                }
+            });
+        });
+
+        // 好友选择器
+        WB2.anyWhere(function(W){
+            W.widget.selector({
+                id : "wb_selector"
+            });
+        });
+    })
+</script>
+</body>
+</html>

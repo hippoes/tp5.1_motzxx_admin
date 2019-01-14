@@ -26,9 +26,6 @@ class SmsCode
         $this->Log = new AdminLog();
         $this->Sms = new SendSms();
         $this->page_limit = config('app.CMS_PAGE_SIZE');
-
-//        $set_config = $this->config_emails = $this->emails->get_find_id_field('emails_config','1','*');
-        // 配置静态属性
     }
 
     public function index()
@@ -45,14 +42,14 @@ class SmsCode
         $phone = '17610900163';
         $code = rand(000000,999999);
         // 发送短信
-        // $res = $this->Sms->send($phone, $code);
+         $res = $this->Sms->send($phone, $code);
         // 发送返回json字串
-        $res = '{"Message":"OK","RequestId":"17B45CEF-90AB-42C0-9143-7D56592DBE13","BizId":"654809646664262391^0","Code":"OK"}';
+//        $res = '{"Message":"OK","RequestId":"17B45CEF-90AB-42C0-9143-7D56592DBE13","BizId":"654809646664262391^0","Code":"OK"}';
         $res = json_decode($res, true);
         $codes = $res['Code'];
         $status = $this->Sms->code_switch($codes);
 
-        dump($status);
+        dump($status.' code：'.$code);
     }
 
 }

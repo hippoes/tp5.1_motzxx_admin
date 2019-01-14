@@ -1,0 +1,93 @@
+{extend name='layouts/cms'}
+{block name='body-content'}
+<table class="layui-table table-body" lay-even="" lay-skin="row">
+    <thead>
+    <tr>
+        <th>
+            <input type="checkbox" name="check_all" class="check_all">
+        </th>
+        <th>ID</th>
+        <th>图标</th>
+        <th>应用名称</th>
+        <th>app_key</th>
+        <th>app_secret</th>
+        <th>访问地址</th>
+        <th>回调地址</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody class="tbody-items">
+    <tr class="tr-item-1">
+        <td><input type="checkbox" name="ids" class="ids" value="1"></td>
+        <td>1</td>
+        <td><img src="https://open.weibo.com/favicon.ico" alt=""></td>
+        <td>微博SDK</td>
+        <td>3603563768</td>
+        <td>2db026b84f9f850558369fc885984a30</td>
+        <td>cms/oauth/weibo</td>
+        <td>cms/oauth/callback.html</td>
+        <td>
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-sm"
+                        onclick="showOauth('weibo', '微博SDK')">
+                    <i class="layui-icon">&#xe679;</i>
+                </button>
+            </div>
+        </td>
+    </tr>
+    <tr class="tr-item-1">
+        <td><input type="checkbox" name="ids" class="ids" value="1"></td>
+        <td>2</td>
+        <td><img src="https://open.weibo.com/favicon.ico" alt=""></td>
+        <td>微博JS-SDK</td>
+        <td>463220163</td>
+        <td>c16217242cfea4e2ebbd4ca504b3bd42</td>
+        <td>cms/oauth/weibo_js_sdk</td>
+        <td></td>
+        <td>
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-sm"
+                        onclick="showOauth('weibo_JS_SDK', '微博JS-SDK')">
+                    <i class="layui-icon">&#xe679;</i>
+                </button>
+            </div>
+        </td>
+    </tr>
+    <tr class="tr-item-1">
+        <td><input type="checkbox" name="ids" class="ids" value="1"></td>
+        <td>3</td>
+        <td><img src="https://connect.qq.com/favicon.ico" alt=""></td>
+        <td>QQ互联SDK</td>
+        <td>101539047</td>
+        <td>2b27382035fc3d2d9915d2a435df0e6a</td>
+        <td>cms/oauth/qq</td>
+        <td></td>
+        <td>
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-sm"
+                        onclick="showOauth('qq', 'QQ互联SDK')">
+                    <i class="layui-icon">&#xe679;</i>
+                </button>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div id="demo2-1"></div>
+
+{/block}
+
+{block name='single-content'}
+<script src="__CMS__/js/adminLog.js"></script>
+<script src="__CMS__/js/moZhang.js"></script>
+
+<script>
+    //根据菜单ID修改菜单信息
+    function showOauth(path, title) {
+        var toUrl = "{:url('cms/oauth/"+path+"')}";
+        ToOpenPopups(toUrl, '<i class="layui-icon">&#xe679;</i> '+title, '68%', '80%');
+    }
+</script>
+
+{/block}

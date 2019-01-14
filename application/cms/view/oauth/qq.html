@@ -1,0 +1,44 @@
+{extend name='layouts/cms'}
+{block name='body-content'}
+<style>
+    .list_content{color:#ff2222;}
+</style>
+{if !empty($nickname)}
+<span>Hi,{$nickname} , <a href="/cms/oauth/qq_loginout">退出登录</a></span>
+{else/}
+<img src='__CMS__/images/qq_oauth.png' onclick='toLogin()'>
+{/if}
+<ul class="layui-timeline">
+    {if !empty($userinfo)}
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">userinfo</h3>
+            <h5>参考链接：<a href="http://wiki.connect.qq.com/get_user_info">http://wiki.connect.qq.com/get_user_info</a></h5>
+
+            <p>用户在QQ空间的昵称: <span class="list_content">{$userinfo['nickname']}</span></p>
+            <p>性别: <span class="list_content">{$userinfo['gender']}</span>(如果获取不到则默认返回"男")</p>
+            <p>所在省市: <span class="list_content">{$userinfo['province']}</span></p>
+            <p>所在城市: <span class="list_content">{$userinfo['city']}</span></p>
+            <p>出生年: <span class="list_content">{$userinfo['year']}</span></p>
+            <p>用户头像: <span class="list_content">{$userinfo['figureurl']}</span>(末尾数字可调整大小30,50,100)</p>
+            <p>用户头像1: <span class="list_content">{$userinfo['figureurl_qq_1']}</span>(末尾数字可调整大小40,100)</p>
+        </div>
+    </li>
+    {/if}
+</ul>
+<script>
+    function toLogin()
+    {
+        //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
+        //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
+        var A=window.open("qq_login","TencentLogin",
+            "width=650,height=480,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+    }
+</script>
+
+{/block}
+
+{block name='single-content'}
+
+{/block}

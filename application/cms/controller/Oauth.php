@@ -120,7 +120,7 @@ class Oauth
         $url = $this->weibo->getAuthorizeURL($this->wb_callback_url);
         // 判断是否已经登录
         $wb_access_token = session::get('wb_access_token');
-        dump($wb_access_token);
+        // dump(date('Y-m-d H:i:s',time()));
         if ($wb_access_token){
             if (Session::get('token_info')){
                 $token_info = Session::get('token_info');
@@ -166,15 +166,16 @@ class Oauth
         $code = $request->get('code');
 
         if($code) {
-            $token_url = 'https://api.weibo.com/oauth2/wb_access_token';
+            $token_url = 'https://api.weibo.com/oauth2/access_token';
             $data['client_id'] = $this->wb_akey;
             $data['client_secret'] = $this->wb_skey;
             $data['grant_type'] = 'authorization_code';
             $data['code'] = $code;
             $data['redirect_uri'] = $this->wb_callback_url;
             $wb_access_token = $this->weibo->post($token_url, $data);
-            if(!empty($wb_access_token['wb_access_token'])){
-                $this->wb_access_token = $wb_access_token['wb_access_token'];
+
+            if(!empty($wb_access_token['access_token'])){
+                $this->wb_access_token = $wb_access_token['access_token'];
                 Session::set('wb_access_token',$this->wb_access_token);
                 dump($this->wb_access_token);
             }else{
@@ -191,7 +192,7 @@ class Oauth
         if ($wb_access_token){
             $url = 'https://api.weibo.com/oauth2/get_token_info';
 
-            $data['wb_access_token'] = $wb_access_token;
+            $data['access_token'] = $wb_access_token;
             $token_info = $this->weibo->post($url, $data);
         }
         Session::set('token_info', $token_info);
@@ -203,7 +204,7 @@ class Oauth
     {
         if ($wb_access_token){
             $url = 'https://api.weibo.com/2/users/show.json';
-            $data['wb_access_token'] = $wb_access_token;
+            $data['access_token'] = $wb_access_token;
 
             $user_info = $this->weibo->get($url, $data);
         }
@@ -216,7 +217,7 @@ class Oauth
     {
         if ($wb_access_token){
             $url = 'https://api.weibo.com/oauth2/revokeoauth2';
-            $data['wb_access_token'] = $wb_access_token;
+            $data['access_token'] = $wb_access_token;
 
             $revoke = $this->weibo->get($url, $data);
         }

@@ -1,0 +1,366 @@
+---------------------------------------------------------------
+[ 2019-01-16T10:39:42+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxLogin.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000336s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT `password`,`id` FROM `tp5_admins` WHERE  `user_name` = 'heze@admin'  AND `status` = 1 LIMIT 1 [ RunTime:0.000219s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:42+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cmsx.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000389s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000673s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000586s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `id` > 0  AND `parent_id` = 0  AND `status` = 1  AND `type` = 0 ORDER BY `list_order` DESC [ RunTime:0.000218s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 1  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 3  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 51  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SELECT `a`.`id`,`a`.`user_name`,`a`.`picture`,`a`.`role_id`,`a`.`created_at`,`a`.`status`,`a`.`content`,ar.user_name role_name FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000210s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:46+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000364s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000707s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000232s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:46+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/admin/role.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000352s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000689s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8'  AND `a`.`status` = '1' LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '1'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 7  AND `status` = 1 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_roles` [ RunTime:0.000545s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_admin_roles` WHERE  `status` <> -1 ORDER BY `status` DESC,`updated_at` DESC [ RunTime:0.000200s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:50+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cmsx.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000371s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000672s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000511s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `id` > 0  AND `parent_id` = 0  AND `status` = 1  AND `type` = 0 ORDER BY `list_order` DESC [ RunTime:0.000216s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 1  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 3  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 51  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SELECT `a`.`id`,`a`.`user_name`,`a`.`picture`,`a`.`role_id`,`a`.`created_at`,`a`.`status`,`a`.`content`,ar.user_name role_name FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000212s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:52+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000338s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000202s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:52+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/admin/role.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000355s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000689s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8'  AND `a`.`status` = '1' LIMIT 1 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000530s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '1'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 7  AND `status` = 1 LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_roles` [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_admin_roles` WHERE  `status` <> -1 ORDER BY `status` DESC,`updated_at` DESC [ RunTime:0.000186s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:53+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000354s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000723s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000232s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:53+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/admin/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000320s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8'  AND `a`.`status` = '1' LIMIT 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '1'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 7  AND `status` = 1 LIMIT 1 [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '7'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000178s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 41  AND `status` = 1 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 42  AND `status` = 1 LIMIT 1 [ RunTime:0.000160s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 6  AND `status` = 1 LIMIT 1 [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SELECT `a`.*,ar.user_name role_name FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `a`.`role_id`=`ar`.`id` WHERE  `a`.`status` = '1' ORDER BY `a`.`id` DESC LIMIT 0,7 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_admins` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000263s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:57+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000349s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000681s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000221s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:39:57+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/menu/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000395s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000652s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8'  AND `a`.`status` = '1' LIMIT 1 [ RunTime:0.000215s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '1'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000179s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 7  AND `status` = 1 LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '7'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 41  AND `status` = 1 LIMIT 1 [ RunTime:0.000159s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 42  AND `status` = 1 LIMIT 1 [ RunTime:0.000151s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 6  AND `status` = 1 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '6'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 38  AND `status` = 1 LIMIT 1 [ RunTime:0.000154s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 39  AND `status` = 1 LIMIT 1 [ RunTime:0.000151s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 40  AND `status` = 1 LIMIT 1 [ RunTime:0.000152s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 2  AND `status` = 1 LIMIT 1 [ RunTime:0.000167s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_nav_menus` WHERE  `id` > 0  AND `status` = 1  AND `type` = 0  AND `name` LIKE '%%' LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `n1`.*,n2.name parent_name FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`parent_id`=`n2`.`id` WHERE  `n1`.`id` > '0'  AND `n1`.`status` = '1'  AND `n1`.`type` = '0'  AND `n1`.`name` LIKE '%%' ORDER BY `n1`.`list_order` DESC,`n1`.`created_at` DESC LIMIT 0,7 [ RunTime:0.000255s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:04+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000391s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000731s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000218s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:04+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/log/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000342s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_log` [ RunTime:0.000675s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_admin_log` ORDER BY `timeline` DESC LIMIT 0,7 [ RunTime:0.000334s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_admin_log` LIMIT 1 [ RunTime:0.000251s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:06+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000435s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000226s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:06+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/menu/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000366s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000716s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8'  AND `a`.`status` = '1' LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000534s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '1'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 7  AND `status` = 1 LIMIT 1 [ RunTime:0.000180s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '7'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 41  AND `status` = 1 LIMIT 1 [ RunTime:0.000173s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 42  AND `status` = 1 LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 6  AND `status` = 1 LIMIT 1 [ RunTime:0.000179s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '6'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000221s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 38  AND `status` = 1 LIMIT 1 [ RunTime:0.000167s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 39  AND `status` = 1 LIMIT 1 [ RunTime:0.000164s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 40  AND `status` = 1 LIMIT 1 [ RunTime:0.000164s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 2  AND `status` = 1 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_nav_menus` WHERE  `id` > 0  AND `status` = 1  AND `type` = 0  AND `name` LIKE '%%' LIMIT 1 [ RunTime:0.000217s ]
+[ sql ] [ SQL ] SELECT `n1`.*,n2.name parent_name FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`parent_id`=`n2`.`id` WHERE  `n1`.`id` > '0'  AND `n1`.`status` = '1'  AND `n1`.`type` = '0'  AND `n1`.`name` LIKE '%%' ORDER BY `n1`.`list_order` DESC,`n1`.`created_at` DESC LIMIT 0,7 [ RunTime:0.000331s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:41+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/menu/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000338s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000687s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8'  AND `a`.`status` = '1' LIMIT 1 [ RunTime:0.000217s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '1'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 7  AND `status` = 1 LIMIT 1 [ RunTime:0.000159s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '7'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 41  AND `status` = 1 LIMIT 1 [ RunTime:0.000157s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 42  AND `status` = 1 LIMIT 1 [ RunTime:0.000167s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 6  AND `status` = 1 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '6'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000169s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 38  AND `status` = 1 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 39  AND `status` = 1 LIMIT 1 [ RunTime:0.000164s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 40  AND `status` = 1 LIMIT 1 [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 2  AND `status` = 1 LIMIT 1 [ RunTime:0.000154s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_nav_menus` WHERE  `id` > 0  AND `status` = 1  AND `type` = 0  AND `name` LIKE '%%' LIMIT 1 [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SELECT `n1`.*,n2.name parent_name FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`parent_id`=`n2`.`id` WHERE  `n1`.`id` > '0'  AND `n1`.`status` = '1'  AND `n1`.`type` = '0'  AND `n1`.`name` LIKE '%%' ORDER BY `n1`.`list_order` DESC,`n1`.`created_at` DESC LIMIT 0,7 [ RunTime:0.000248s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:46+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000369s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000686s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000218s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:46+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/log/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000366s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_log` [ RunTime:0.000647s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_admin_log` ORDER BY `timeline` DESC LIMIT 0,7 [ RunTime:0.000188s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_admin_log` LIMIT 1 [ RunTime:0.000161s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:49+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/log/ajaxopforpage.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_log` [ RunTime:0.000701s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_admin_log` ORDER BY `timeline` DESC LIMIT 7,7 [ RunTime:0.000330s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:49+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/log/ajaxopforpage.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000467s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_log` [ RunTime:0.000887s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_admin_log` ORDER BY `timeline` DESC LIMIT 14,7 [ RunTime:0.000444s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:50+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/log/ajaxopforpage.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000515s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_log` [ RunTime:0.000902s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_admin_log` ORDER BY `timeline` DESC LIMIT 21,7 [ RunTime:0.000450s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:51+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000381s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000681s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000211s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:51+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/todayWord/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000361s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000684s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8'  AND `a`.`status` = '1' LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000526s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '1'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000180s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 7  AND `status` = 1 LIMIT 1 [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '7'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 41  AND `status` = 1 LIMIT 1 [ RunTime:0.000162s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 42  AND `status` = 1 LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 6  AND `status` = 1 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '6'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000177s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 38  AND `status` = 1 LIMIT 1 [ RunTime:0.000158s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 39  AND `status` = 1 LIMIT 1 [ RunTime:0.000244s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 40  AND `status` = 1 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 2  AND `status` = 1 LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '2'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 29  AND `status` = 1 LIMIT 1 [ RunTime:0.000156s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 30  AND `status` = 1 LIMIT 1 [ RunTime:0.000150s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 31  AND `status` = 1 LIMIT 1 [ RunTime:0.000164s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 32  AND `status` = 1 LIMIT 1 [ RunTime:0.000150s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 50  AND `status` = 1 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '50'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 3  AND `status` = 1 LIMIT 1 [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '3'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 4  AND `status` = 1 LIMIT 1 [ RunTime:0.000157s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_today_words` [ RunTime:0.000655s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_today_words` WHERE  `status` = 1  AND `from` LIKE '%%' ORDER BY `id` DESC LIMIT 0,7 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_today_words` WHERE  `status` = 1  AND `from` LIKE '%%' LIMIT 1 [ RunTime:0.000214s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:56+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000351s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000230s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:40:56+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/article/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000686s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8'  AND `a`.`status` = '1' LIMIT 1 [ RunTime:0.000284s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '1'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 7  AND `status` = 1 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '7'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 41  AND `status` = 1 LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 42  AND `status` = 1 LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 6  AND `status` = 1 LIMIT 1 [ RunTime:0.000163s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '6'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 38  AND `status` = 1 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 39  AND `status` = 1 LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 40  AND `status` = 1 LIMIT 1 [ RunTime:0.000155s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 2  AND `status` = 1 LIMIT 1 [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '2'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000173s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 29  AND `status` = 1 LIMIT 1 [ RunTime:0.000160s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 30  AND `status` = 1 LIMIT 1 [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 31  AND `status` = 1 LIMIT 1 [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 32  AND `status` = 1 LIMIT 1 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 50  AND `status` = 1 LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '50'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 3  AND `status` = 1 LIMIT 1 [ RunTime:0.000162s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '3'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000173s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 4  AND `status` = 1 LIMIT 1 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SELECT `n2`.`id` FROM `tp5_nav_menus` `n1` INNER JOIN `tp5_nav_menus` `n2` ON `n1`.`id`=`n2`.`parent_id` WHERE  `n2`.`parent_id` = '4'  AND `n2`.`status` = '1'  AND `n2`.`type` = '1' [ RunTime:0.000217s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 33  AND `status` = 1 LIMIT 1 [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 34  AND `status` = 1 LIMIT 1 [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 35  AND `status` = 1 LIMIT 1 [ RunTime:0.000158s ]
+[ sql ] [ SQL ] SELECT `action` FROM `tp5_nav_menus` WHERE  `id` = 5  AND `status` = 1 LIMIT 1 [ RunTime:0.000165s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_articles` [ RunTime:0.000719s ]
+[ sql ] [ SQL ] SELECT `a`.`id`,`title`,`a`.`updated_at`,`status`,`picture`,`abstract` FROM `tp5_articles` `a` INNER JOIN `tp5_article_points` `ap` ON `ap`.`article_id`=`a`.`id` WHERE  `ap`.`status` = '1'  AND `a`.`title` LIKE '%%' ORDER BY `a`.`list_order` DESC,`a`.`id` DESC LIMIT 0,7 [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_articles` `a` INNER JOIN `tp5_article_points` `ap` ON `ap`.`article_id`=`a`.`id` WHERE  `ap`.`status` = '1'  AND `a`.`title` LIKE '%%' LIMIT 1 [ RunTime:0.000211s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:00+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000366s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000229s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:00+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/plug/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000348s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_plugs` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_plugs` ORDER BY `timeline` DESC LIMIT 0,7 [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_plugs` LIMIT 1 [ RunTime:0.000167s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:02+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cmsx.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000357s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000689s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_nav_menus` [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `id` > 0  AND `parent_id` = 0  AND `status` = 1  AND `type` = 0 ORDER BY `list_order` DESC [ RunTime:0.000232s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 1  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000205s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 3  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_nav_menus` WHERE  `parent_id` = 51  AND `status` = 1 ORDER BY `list_order` DESC [ RunTime:0.000188s ]
+[ sql ] [ SQL ] SELECT `a`.`id`,`a`.`user_name`,`a`.`picture`,`a`.`role_id`,`a`.`created_at`,`a`.`status`,`a`.`content`,ar.user_name role_name FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000225s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:05+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000351s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000726s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000224s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:05+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/plug/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000367s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_plugs` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_plugs` ORDER BY `timeline` DESC LIMIT 0,7 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_plugs` LIMIT 1 [ RunTime:0.000225s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:07+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000387s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000660s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000253s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:11+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000359s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000846s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000275s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:12+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/login/ajaxCheckLoginStatus.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000354s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000734s ]
+[ sql ] [ SQL ] SELECT `nav_menu_ids` FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000217s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:12+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/email/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000363s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails_config` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails_config` WHERE  `id` = 1 [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails` [ RunTime:0.000600s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails` ORDER BY `timeline` DESC LIMIT 0,7 [ RunTime:0.000309s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_emails` LIMIT 1 [ RunTime:0.000248s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:41:19+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/email/edit/id/12.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000395s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails_config` [ RunTime:0.000686s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails_config` WHERE  `id` = 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails` [ RunTime:0.000561s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails` WHERE  `id` = 12 [ RunTime:0.000278s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:42:42+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/email/edit.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000337s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails_config` [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails_config` WHERE  `id` = 1 [ RunTime:0.000214s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails` [ RunTime:0.000553s ]
+[ sql ] [ SQL ] UPDATE `tp5_emails`  SET `sender` = '何泽小生' , `sender_email` = '2441561897@qq.com' , `title` = '测试邮件' , `send_emails` = '2441561897@qq.com' , `content` = '测试邮件' , `attachment` = '/upload/20190116/10fa37579716d903de476fdeab4c7b72.png' , `attachment_name` = 'jiaoben789.rar' , `update_timeline` = 1547606562  WHERE  `id` = 12 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SELECT `a`.`user_name`,ar.user_name role_name FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_log` [ RunTime:0.000478s ]
+[ sql ] [ SQL ] INSERT INTO `tp5_admin_log` (`performer` , `ip` , `timeline` , `action`) VALUES ('heze@admin(终级管理员)' , '121.69.98.234' , 1547606562 , '修改邮件，测试邮件 \"修改成功\"') [ RunTime:0.000253s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:42:44+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/email/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000345s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails_config` [ RunTime:0.000704s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails_config` WHERE  `id` = 1 [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails` [ RunTime:0.000567s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails` ORDER BY `timeline` DESC LIMIT 0,7 [ RunTime:0.000504s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp5_emails` LIMIT 1 [ RunTime:0.000204s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:42:48+08:00 ] 121.69.98.234 GET hippos.sharephotos.cn/cms/email/send/id/12.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000346s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails_config` [ RunTime:0.000657s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails_config` WHERE  `id` = 1 [ RunTime:0.000210s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails` [ RunTime:0.000541s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails` WHERE  `id` = 12 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT `sendfail_email` FROM `tp5_emails` WHERE  `id` = 12 [ RunTime:0.000215s ]
+---------------------------------------------------------------
+[ 2019-01-16T10:42:55+08:00 ] 121.69.98.234 POST hippos.sharephotos.cn/cms/email/send.html?rand%20=0.052793434119281724
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000332s ] mysql:host=127.0.0.1;dbname=tp5_pro;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails_config` [ RunTime:0.000662s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails_config` WHERE  `id` = 1 [ RunTime:0.000221s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_emails` [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SELECT * FROM `tp5_emails` WHERE  `id` = 12 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `sendfail_email` FROM `tp5_emails` WHERE  `id` = 12 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] UPDATE `tp5_emails`  SET `sendfail_email` = NULL , `status` = 1 , `send_timeline` = 1547606575  WHERE  `id` = 12 [ RunTime:0.000322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admins` [ RunTime:0.000605s ]
+[ sql ] [ SQL ] SELECT `a`.`user_name`,ar.user_name role_name FROM `tp5_admins` `a` INNER JOIN `tp5_admin_roles` `ar` ON `ar`.`id`=`a`.`role_id` WHERE  `a`.`id` = '8' LIMIT 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp5_admin_log` [ RunTime:0.000480s ]
+[ sql ] [ SQL ] INSERT INTO `tp5_admin_log` (`performer` , `ip` , `timeline` , `action`) VALUES ('heze@admin(终级管理员)' , '121.69.98.234' , 1547606575 , '更新发送失败邮箱地址，null \"该邮箱地址发送失败\"') [ RunTime:0.000219s ]
